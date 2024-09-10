@@ -9,9 +9,15 @@ export class lugarModel {
         where: { id_ciudad },
       });
 
+      if (listaLugares.length === 0) {
+        return res.json({
+          message: "No se encontraron lugares",
+        });
+      }
+
       return res.json(listaLugares);
     } catch (error) {
-      res.status(500).json({ message: "Error al obtener las ciudades", error });
+      res.status(500).json({ message: "Error al obtener los lugares", error });
     }
   }
 }
